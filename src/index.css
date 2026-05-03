@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@layer base {
+	html {
+		@apply bg-white ;
+	}
+
+	body {
+		@apply min-h-screen bg-white;
+	}
+
+	#root {
+		@apply min-h-screen;
+	}
+}
