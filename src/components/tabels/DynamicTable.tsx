@@ -39,7 +39,7 @@ const DynamicTable = () => {
             gap-2
             bg-red-700
             hover:bg-red-800
-            text-white
+            text-var(--text-color)
             px-4
             py-2
             rounded-xl
@@ -52,16 +52,16 @@ const DynamicTable = () => {
       </div>
       <table className="w-full border overflow-hidden rounded-2xl" dir="rtl">
         <thead>
-          <tr className="bg-gray-100">
-            <th className="px-3 py-3 border border-gray-300 text-right font-medium">
+          <tr className="bg-var(--bg-color)">
+            <th className="px-3 py-3 text-(--text-color) border border-gray-300 text-right font-medium">
               اسم الدراجة
             </th>
 
-            <th className="px-3 py-3 border border-gray-300 text-right font-medium">
+            <th className="px-3 py-3 text-(--text-color) border border-gray-300 text-right font-medium">
               رقم المحرك
             </th>
 
-            <th className="px-3 py-3 border border-gray-300 text-center font-medium">
+            <th className="px-3 py-3 text-(--text-color) border border-gray-300 text-center font-medium">
               إجراءات
             </th>
           </tr>
@@ -71,12 +71,12 @@ const DynamicTable = () => {
           {rows.map((row) => (
             <tr
               key={row.id}
-              className="hover:bg-gray-50 transition-all"
+              className=" transition-all"
             >
-              <td className="px-2.5 py-2.5 border-b border-gray-300">
+              <td className="px-2.5 py-2.5 ">
                 <input
                   type="text"
-                  dir="ltr"
+                  dir="rtl"
                   value={row.bikeName}
                   onChange={(e) =>
                     dispatch(
@@ -88,26 +88,26 @@ const DynamicTable = () => {
                     )
                   }
                   className="
+                    
                     w-full
                     p-2.5
                     rounded-lg
-                    border
-                    border-gray-300
-                    bg-white
-                    text-gray-900
+                   
+                   text-(--text-color)
+                    bg-(--bg-color)
+                   
                     focus:outline-none
                     focus:ring-2
-                    focus:ring-red-500
+                    focus:ring-red-700
                   "
+                 
                 />
               </td>
 
-              {/* engine number */}
-
-              <td className="px-2.5 py-2.5 border-b border-gray-300">
+              <td className="px-2.5 py-2.5 border-b ">
                 <input
                   type="text"
-                  dir="ltr"
+                  dir="rtl"
                   value={row.engineNumber}
                   onChange={(e) =>
                     dispatch(
@@ -122,24 +122,21 @@ const DynamicTable = () => {
                     w-full
                     p-2.5
                     rounded-lg
-                    border
-                    border-gray-300
-                    bg-white
-                    text-gray-900
+                  
+                    text-(--text-color)
+                    bg-(--bg-color)
+               
                     focus:outline-none
                     focus:ring-2
-                    focus:ring-red-500
+                    focus:ring-red-700
                   "
                 />
               </td>
-
-              {/* actions: copy / paste / delete */}
-
               <td className="px-2.5 py-2.5 border-b border-gray-300 text-center">
                 <div className="flex items-center justify-center gap-2">
                   <button
                     onClick={() => dispatch(copyRow(row.id))}
-                    className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all"
+                    className="p-2 rounded-lg  bg-(--bg-color) hover:bg-gray-200 text-gray-700 transition-all"
                     title="نسخ"
                   >
                     <ContentCopyIcon />
@@ -148,7 +145,7 @@ const DynamicTable = () => {
                   <button
                     onClick={() => dispatch(pasteRow(row.id))}
                     disabled={!copiedRow}
-                    className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all disabled:opacity-50"
+                    className="p-2 rounded-lg  bg-(--bg-color) hover:bg-gray-200 text-gray-700 transition-all disabled:opacity-50"
                     title="لصق"
                   >
                     <ContentPasteIcon />
@@ -158,7 +155,7 @@ const DynamicTable = () => {
                     onClick={() =>
                       dispatch(deleteRow(row.id))
                     }
-                    className="p-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-700 transition-all"
+                    className="p-2 rounded-lg  bg-(--bg-color) hover:bg-red-200 text-red-700 transition-all"
                     title="حذف"
                   >
                     <DeleteIcon />

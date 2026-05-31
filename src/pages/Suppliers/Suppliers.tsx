@@ -17,7 +17,8 @@ export const SuppliersPage = () => {
 
     return (
         <div className="p-1">
-            <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center", mb: 2, gap: 2, flexWrap: "nowrap" }}>
+            <Box sx={{ display: "flex", justifyContent: "space-between",
+                 width: "100%", alignItems: "center", mb: 2, gap: 2, flexWrap: "nowrap" }}>
                  <h1 className="text-2xl">الموردين</h1>
                 <Button text="اضافة مورد" onClick={() => setIsAddSupplierOpen(true)} />
                

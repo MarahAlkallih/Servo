@@ -24,19 +24,19 @@ export const InputField = ({
         onChange={onChange}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className={`w-full h-12 border rounded-lg pr-2 pl-5  leading-none outline-none transition-all
+        className={`w-full h-12 border rounded-lg pr-10 pl-10  leading-none outline-none transition-all
         ${error ? "border-red-500" : focused ? "border-(--main-color)" : "border-gray-300"}`}
       />
-      <label
-        className={`absolute right-10 transition-all duration-200 pointer-events-none
-        ${
-          focused || value
-            ? "-translate-y-1/2 top-0 text-xs text-gray-500 bg-white px-2"
-            : "top-3 text-gray-500"
-        }`}
-      >
-        {label}
-      </label>
+    <label
+  className={`absolute right-10 transition-all duration-200 pointer-events-none
+  ${
+    focused || value
+      ? "-translate-y-1/2 top-0 text-xs text-gray-500 bg-[var(--bg-color)] px-2"
+      : "top-3 text-gray-500"
+  }`}
+>
+  {label}
+</label>
       {icon && (
         <div className="absolute right-2 top-3 text-gray-500">
           {icon}

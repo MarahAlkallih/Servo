@@ -25,7 +25,15 @@ export function CustomDataGrid<T extends GridValidRowModel>({
   });
 
   return (
-    <Paper elevation={0} sx={{ overflow: "hidden", borderRadius: 3 }}>
+   <Paper
+  elevation={0}
+  sx={{
+    overflow: "hidden",
+    borderRadius: 3,
+    background: "var(--bg-color)",
+    color: "var(--text-color)",
+  }}
+>
       <DataGrid
         rows={rows}
         columns={columns as GridColDef[]}
@@ -34,25 +42,79 @@ export function CustomDataGrid<T extends GridValidRowModel>({
         pageSizeOptions={pageSizeOptions}
         paginationModel={paginationModel}
         onPaginationModelChange={setPaginationModel}
-        sx={{
-          border: 0,
-          direction: "rtl",
-          "& .MuiDataGrid-columnHeaders": {
-            bgcolor: "#f8f8f8",
-            borderBottom: "1px solid",
-            borderColor: "divider",
-          },
-          "& .MuiDataGrid-columnHeaderTitle": {
-            fontWeight: 700,
-          },
-          "& .MuiDataGrid-cell": {
-            outline: "none",
-          },
-          "& .MuiDataGrid-row:hover": {
-            bgcolor: "rgba(139, 0, 0, 0.04)",
-          },
-          ...sx,
-        }}
+     sx={{
+  border: 0,
+  direction: "rtl",
+
+  backgroundColor: "var(--bg-color)",
+  color: "var(--text-color)",
+
+  "& .MuiDataGrid-main": {
+    backgroundColor: "var(--bg-color)",
+    color: "var(--text-color)",
+  },
+
+"& .MuiDataGrid-columnHeaders": {
+  background: "var(--grey-color) !important",
+  color: "var(--text-color) !important",
+//  borderBottom: "1px solid rgba(255,255,255,0.1)",
+},
+
+"& .MuiDataGrid-columnHeader": {
+  background: "var(--secondary-color) !important",
+  color: "var(--text-color) !important",
+},
+
+"& .MuiDataGrid-columnHeaderTitle": {
+  fontWeight: 700,
+  color: "var(--text-color) !important",
+},
+
+"& .MuiDataGrid-columnSeparator": {
+  color: "var(--text-color) !important",
+},
+
+
+
+  "& .MuiDataGrid-cell": {
+    outline: "none",
+    color: "var(--text-color)",
+    borderColor: "rgba(255,255,255,0.08)",
+  },
+
+  "& .MuiDataGrid-row": {
+    backgroundColor: "var(--bg-color)",
+    color: "var(--text-color)",
+  },
+
+  "& .MuiDataGrid-row:hover": {
+    backgroundColor: "rgba(139, 0, 0, 0.08)",
+  },
+
+  "& .MuiDataGrid-footerContainer": {
+    backgroundColor: "var(--bg-color)",
+    borderTop: "1px solid rgba(255,255,255,0.08)",
+    color: "var(--text-color)",
+  },
+
+  "& .MuiTablePagination-root": {
+    color: "var(--text-color)",
+  },
+
+  "& .MuiSvgIcon-root": {
+    color: "var(--text-color)",
+  },
+
+  "& .MuiDataGrid-iconButtonContainer .MuiSvgIcon-root": {
+    color: "var(--text-color)",
+  },
+
+  "& .MuiDataGrid-menuIconButton .MuiSvgIcon-root": {
+    color: "var(--text-color)",
+  },
+
+  ...sx,
+}}
       />
     </Paper>
   );

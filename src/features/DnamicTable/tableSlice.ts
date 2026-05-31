@@ -26,18 +26,12 @@ const tableSlice = createSlice({
   initialState,
 
   reducers: {
-    
-    // إنشاء جدول
-
     createRows: (
       state,
       action: PayloadAction<number>
     ) => {
 
       state.rowCount = action.payload;
-
-      // loading إذا العدد كبير
-
       if (action.payload > 10) {
         state.loading = true;
       }

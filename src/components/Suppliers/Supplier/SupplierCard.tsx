@@ -17,11 +17,12 @@ export const SupplierCard: React.FC<SupplierCardProps> = ({ name, phone, address
     return (
         <div
             className="
-                relative bg-white p-4 pt-16 rounded-lg shadow-sm
+                relative  bg-(--bg-color) p-4 pt-16 rounded-lg
+                border-0.5 
                 border-r-4 border-r-[--main-color]
                 text-right group
                 hover:shadow-md hover:-translate-y-0.5
-                transition-transform
+                transition-transform shadow-2xl 
             "
         >
 
