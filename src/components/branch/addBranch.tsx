@@ -6,7 +6,6 @@ import { InputField } from "../InputField/InputField";
 import { Button } from "../Button/Button";
 import { useMutation, useQuery } from "@apollo/client/react";
 import { toast } from "react-toastify";
-import { CREATE_COMPANY } from "../../graphql/mutition/companies/companyMutition"; 
 import CustomDropdown from "../DropDown/CustomDropdown";
 import { GET_COMPANIES } from "../../graphql/queries/companies/companies";
 import type { GetCompaniesResponse } from "../../types/Company";

@@ -1,16 +1,54 @@
 import Box from '@mui/material/Box';
 import logo from '../../assets/moto_logo.png';
 import { InputField } from '../../components/InputField/InputField';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Phone from '@mui/icons-material/Phone';
 import LockIcon from "@mui/icons-material/Lock";
 import { Button } from "../../components/Button/Button";
+import {LOGIN} from "../../graphql/mutition/login/login"
+import { setAuth } from '../../features/auth/setAuth';
+import { useMutation } from '@apollo/client/react';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '../../app/store';
 export const LoginPage = () => {
+  const dispatch=useDispatch();
   const [user, setUser] = useState({
     phone: '',
     password: ''
   });
+  const [loginUser, { data, loading }] =
+  useMutation<LoginResponse>(LOGIN);
+  const {accessToken}=useSelector((state:RootState)=>state.auth);
+  type LoginResponse = {
+  login: {
+    accessToken: string;
+    user: {
+      id: number;
+      name: string;
+      phone: string;
+    };
+  };
+};
+ const handleLogin = async () => {
+  try {
+    const res = await loginUser({
+      variables: {
+        input: {
+          phone: user.phone,
+          password: user.password,
+        },
+      },
+    });
 
+    if (res.data?.login) {
+      dispatch(setAuth(res.data.login));
+    }
+
+  } catch (err) {
+    console.log(err);
+  }
+};
+ 
   return (
     <div className='flex min-h-screen'>
 
@@ -28,12 +66,12 @@ export const LoginPage = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: 'grey.100',
+            backgroundColor:' (--bg-color)',
 
             borderTopRightRadius: '20px',
             borderBottomRightRadius: '20px',
             boxShadow: `
-  -10px 10px 30px rgba(0,0,0,0.05),
+  -10px 10px 30px rgba(1,1,1,0.05),
   -5px 5px 20px rgba(139, 0, 0, 0.15),
   -2px 2px 10px rgba(139, 0, 0, 0.2)
 `,
@@ -47,7 +85,8 @@ export const LoginPage = () => {
             src={logo}
             alt="Logo"
             style={{
-              maxWidth: '300px',
+              
+              maxWidth: '400px',
               width: '100%',
               height: '100%'
             }}
@@ -62,7 +101,7 @@ export const LoginPage = () => {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#fff',
+            backgroundColor:' (--bg-color)',
             p: 4,
             gap: 3
           }}
@@ -89,7 +128,7 @@ export const LoginPage = () => {
               icon={<LockIcon />}
               type='password'
             />
-            <Button text="تسجيل الدخول" onClick={() => { console.log("user"); }} />
+            <Button text={loading?"...جاري تسجيل الدخول ":"تسجيل الدخول"} onClick={handleLogin } />
 
           </div>
         </Box>

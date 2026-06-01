@@ -15,11 +15,13 @@ import { BranchesLayout } from "./pages/Branches/Layout";
 import { Sub } from "./pages/Branches/Sub";
 import { Main } from "./pages/Branches/Main";
 import { Warehouses } from "./pages/Warehouses/Warehouses";
+import { LoginPage } from "./pages/LoginPage/Loginpage";
 function App() {
   return (
     <Provider store={store}>
       <DarkModeProvider>
         <Routes>
+          <Route path="/login" element={<LoginPage/>}/>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Navigate to="/roles" replace />} />
             <Route path="/roles" element={<RolesPage />} />
